@@ -42,8 +42,16 @@ public class PythonCommand implements CommandExecutor {
         // String cmd = "py C:\\Python\\test\\test.py";
 
         try {
-            String cmd = _helper.getConfig().getString("py.python_command_template");
-            cmd = cmd.replace("{name}", args[0]) + " " + player.getName();
+            StringBuilder builder=new StringBuilder();
+            String cmdTemplate = _helper.getConfig().getString("py.python_command_template");
+            
+            builder.append(cmdTemplate.replace("{name}", args[0]));
+            builder.append(" ").append(player.getName());
+            for(int i=1;i<args.length;i++){
+                builder.append(" ").append(args[i]);
+            }
+
+            String cmd=builder.toString();
             _helper.SendMessage(player, "Run python command: " + cmd);
             Process process = Runtime.getRuntime().exec(cmd);
 

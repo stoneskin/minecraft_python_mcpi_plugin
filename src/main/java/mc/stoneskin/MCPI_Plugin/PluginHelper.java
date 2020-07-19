@@ -12,8 +12,8 @@ public class PluginHelper {
 
 	public PluginHelper(final Plugin plugin) {
 		this.plugin = plugin;
-		plugin.saveDefaultConfig();;
 		config = plugin.getConfig();
+		plugin.saveDefaultConfig();;
 	}
 
 	public void ReloadConfig() {
