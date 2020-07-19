@@ -12,6 +12,7 @@ public class PluginHelper {
 
 	public PluginHelper(final Plugin plugin) {
 		this.plugin = plugin;
+		plugin.saveDefaultConfig();;
 		config = plugin.getConfig();
 	}
 
@@ -32,6 +33,7 @@ public class PluginHelper {
 	}
 
 	public void SendMessage(Player player, String msg) {
+		this.plugin.getLogger().info("player["+player.getName() +"] sending msg:"+msg);
 		String[] outs = FormateMessage(player, msg);
 
 		for (String s : outs) {

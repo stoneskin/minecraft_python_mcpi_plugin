@@ -19,14 +19,22 @@ public class PythonCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-    
+
         Bukkit.getServer().getLogger().info("Python command be called,sender: " + sender.getName() + " command:"
                 + command.getName() + " label:" + label);
-       if (args.length > 0   && (sender instanceof Player))  {
+        if (args.length > 0 && (sender instanceof Player)) {
             Player player = (Player) sender;
-            return RunPythonCommand(player,args);
-       }      
-      
+            if ("reload".equals(args[0])) {
+                _helper.ReloadConfig();
+                _helper.SendMessage(player, "Run Python path reloaded. " );
+                return true;
+            } else {
+               
+                return RunPythonCommand(player, args);
+            }
+
+        }
+
         return false;
     }
 
@@ -35,11 +43,11 @@ public class PythonCommand implements CommandExecutor {
 
         try {
             String cmd = _helper.getConfig().getString("py.python_command_template");
-            cmd = cmd.replace("{name}", args[0])+" "+player.getName();
-            _helper.SendMessage(player, "Run python command: "+cmd);
+            cmd = cmd.replace("{name}", args[0]) + " " + player.getName();
+            _helper.SendMessage(player, "Run python command: " + cmd);
             Process process = Runtime.getRuntime().exec(cmd);
 
-            //todo: 
+            // todo:
             // // deal with OutputStream to send inputs
             // process.getOutputStream();
 
@@ -59,7 +67,7 @@ public class PythonCommand implements CommandExecutor {
         } catch (Exception e) {
             _helper.SendMessage(player, e.getMessage());
             e.printStackTrace();
-           
+
         }
         return false;
     }
