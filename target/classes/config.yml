@@ -1,0 +1,2 @@
+py:
+    python_command_template: 'py C:\Python\test\{name}.py'

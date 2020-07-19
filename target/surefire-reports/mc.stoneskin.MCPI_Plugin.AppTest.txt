@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: mc.stoneskin.MCPI_Plugin.AppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.402 s - in mc.stoneskin.MCPI_Plugin.AppTest

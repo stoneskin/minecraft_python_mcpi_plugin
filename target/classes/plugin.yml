@@ -1,0 +1,23 @@
+﻿name: python_mcpi_plugin
+version: 0.0.1
+main: mc.stoneskin.MCPI_Plugin.MCPIPlugin
+author: stoneskin
+description: Call python mcpi code from Minecraft game!
+load: POSTWORLD
+prefix: McpiPlugin
+commands: 
+  py:
+    permission: mcpi_plugin.* 
+    description: for calling python code from Minecraft command
+    usage: /<command> [filename without .py extension]
+    permission-message: You do not have permission to use this command.
+  
+
+permissions:
+  mcpi_plugin.*:
+    description: Only Op could run python command
+    default: op
+  
+
+      
+
